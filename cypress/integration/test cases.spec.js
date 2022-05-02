@@ -130,7 +130,71 @@ describe('cypress-xpath', () => {
             cy.xpath('//div[@id="search-result"]').children().each((elem) => {
             cy.get(elem).find('span[test-data="MatchedKeywords"]').should('contain', 'java')
             })
-            
+             
+        })
+        // this test case for update my skills and check its score and rates
+        it('Update',()=>{
+            cy.xpath("//a[@href='/en/profile/']").click()
+            cy.xpath("//a[@role='button'][normalize-space()='Update my skills']").click()
+            cy.xpath("//a[normalize-space()='Start']").click()
+            cy.xpath("//input[@id='6']").click()
+            cy.xpath("//input[@test-data='NextStep']").click()
+            cy.xpath("//input[@id='11']").click()
+            cy.xpath("//input[@id='17']").click()
+            cy.xpath("//input[@id='22']").click()
+            cy.xpath("//input[@id='28']").click()   
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='33']").click()
+            cy.xpath("//input[@id='38']").click()
+            cy.xpath("//input[@id='43']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='46']").click()
+            cy.xpath("//input[@id='51']").click()
+            cy.xpath("//input[@id='58']").click()
+            cy.xpath("//input[@id='62']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='65']").click()
+            cy.xpath("//input[@id='69']").click()
+            cy.xpath("//input[@id='74']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='82']").click()
+            cy.xpath("//input[@id='87']").click()
+            cy.xpath("//input[@id='92']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='95']").click()
+            cy.xpath("//input[@id='103']").click()
+            cy.xpath("//input[@id='108']").click()
+            cy.xpath("//input[@id='112']").click()
+            cy.xpath("//input[@id='117']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath("//input[@id='119']").click()
+            cy.xpath("//input[@id='122']").click()
+            cy.xpath("//input[@id='135']").click()
+            cy.get('[style="display: block; opacity: 1;"] > .next').click()
+            cy.xpath(`.//*[@test-data="area_1_Scor"]`).contains('(8/16)')
+            cy.xpath('//div[contains(@test-data,"area_1_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',2 )
+    
+            cy.xpath(`.//*[@test-data="area_2_Scor"]`).contains('(12/12)')
+            cy.xpath('//div[contains(@test-data,"area_2_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',5 )
+    
+    
+            cy.xpath(`.//*[@test-data="area_3_Scor"]`).contains('11/16)')
+            cy.xpath('//div[contains(@test-data,"area_3_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',3 )
+    
+            cy.xpath(`.//*[@test-data="area_4_Scor"]`).contains('(1/12)')
+            cy.xpath('//div[contains(@test-data,"area_4_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',0 )
+    
+            cy.xpath(`.//*[@test-data="area_5_Scor"]`).contains('(9/12)')
+            cy.xpath('//div[contains(@test-data,"area_5_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',4 )
+    
+            cy.xpath(`.//*[@test-data="area_6_Scor"]`).contains('(15/20)')
+            cy.xpath('//div[contains(@test-data,"area_6_myscore")]//child::label[contains(@test-data,"filledStar")]').should('have.length',4 )
+    
+           
+          
+          })
+        })
+    })
         })
         
     })
