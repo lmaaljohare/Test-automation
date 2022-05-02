@@ -79,7 +79,9 @@ describe('cypress-xpath', () => {
             cy.wrap(elem).should("contain","Java Programming Masterclass covering Java 11 & Java 17")
         })                
         })
-    
+      
+
+        .$$.
     })
 })
        
