@@ -61,6 +61,27 @@ describe('cypress-xpath', () => {
         })
     
     })
+    it("Course Title", () => {
+     
+        cy.xpath(`//*[@id="navbarSupportedContent"]/ul[1]/li[3]/a`).click()
+        cy.xpath('//*[@test-data="AdvancedOptions"]').click()
+    
+        cy.get(`.tagify__input`).type(`${course}`).type('{enter}')
+       
+        cy.xpath("//label[@for='search_in_title']").click()
+        // Search in the title of the course
+        
+        cy.xpath(`//*[@test-data="searchButton"]`).click()
+        cy.xpath('//div[@id="search-result"]').children().each((elem) => {
+        cy.xpath('//div[@id="search-result"]').children().each((elem) => {
+        cy.get('#search-result [test-data*=searchItem').each((elem)=>
+        {
+            cy.wrap(elem).should("contain","Java Programming Masterclass covering Java 11 & Java 17")
+        })                
+        })
+    
+    })
+})
        
     })
 })
