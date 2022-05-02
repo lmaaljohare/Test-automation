@@ -131,14 +131,12 @@ describe('cypress-xpath', () => {
             cy.get(elem).find('span[test-data="MatchedKeywords"]').should('contain', 'java')
             })
             
-        
+        })
         
     })
 })
-       
+
     })
+
+    
 })
-   
-
-
-
