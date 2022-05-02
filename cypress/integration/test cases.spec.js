@@ -80,7 +80,58 @@ describe('cypress-xpath', () => {
         })                
         })
       
-
+        it('Search by reviews',()=>{
+            //Sort based on user reviews
+            cy.xpath("//a[normalize-space()='Search']").click()
+            cy.xpath("//span[@role='textbox']").type('Java')
+            cy.xpath('//*[@test-data="AdvancedOptions"]').click()
+            cy.xpath('//*[@test-data="sort_by_user_reviews"]').click()
+        cy.xpath(`//*[@test-data="searchButton"]`).click()
+        var count = "";
+        let listOfRate = []
+        for (let i = 1; i <= 10; i++) {
+            cy.xpath('//*[@test-data="searchItem_' + i + '"]//child::div[contains(@test-data,"UserFeedback")]').find('*[class]').then(element => {
+                count = 0;
+                for (let j = 0; j < 5; j++) {
+                    if (element.[j].classList.[0]) {
+                        count++;
+                    }
+                }
+                if (!element.[4].classList.[0]) {
+                    count = 0;
+                }
+                listOfRate[i - 1] = count
+            })
+        }
+        cy.then(() => {
+            var counter = 1
+            for (let i = 0; i <= 10; i++) {
+                if (listOfRate[i] >= listOfRate[i + 1]) {
+                    counter++;
+                }
+                else if (listOfRate[i] < listOfRate[i + 1]) {
+                    counter--;
+                }
+            }
+            if (counter == 10) {
+                cy.log("Succesfull")
+            }
+        })
+        })
+        it("Translate", () => {
+            
+            cy.xpath(`//*[@id="navbarSupportedContent"]/ul[1]/li[3]/a`).click()
+            cy.xpath('//*[@test-data="AdvancedOptions"]').click()
+            //Using translate option
+            const arabic="جافا"
+            cy.get(`.tagify__input`).type(`${arabic}`).type('{enter}')
+            cy.xpath('//*[@test-data="translateInput"]').select('en')
+            cy.xpath(`//*[@test-data="searchButton"]`).click()
+            cy.xpath('//div[@id="search-result"]').children().each((elem) => {
+            cy.get(elem).find('span[test-data="MatchedKeywords"]').should('contain', 'java')
+            })
+            
+        
         
     })
 })
